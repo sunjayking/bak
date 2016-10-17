@@ -1,0 +1,1 @@
+start "C:/Progra~1/nodejs/nodevars.bat"

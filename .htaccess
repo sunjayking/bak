@@ -1,0 +1,16 @@
+#重写规则
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{REQUEST_URI} ^/$
+
+## admin
+#RewriteRule ^(.*)$ /www/20160827/ [L]
+#RewriteRule ^main\.(.*)$ /www/20160827/main.$1 [L]
+
+
+
+# ErrorDocument 403 /404.html
+
+# 禁止访问目录
+order allow,deny
+deny from all
