@@ -1,0 +1,38 @@
+{
+  "name": "romanote",
+  "version": "1.0.0",
+  "description": "romanote",
+  "main": "main.js",
+  "scripts": {
+    "build": "webpack --progress --colors",
+    "start": "webpack-dev-server --progress --hot --inline --profile --history-api-fallback --colors"
+  },
+  "author": "sunjay",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "clean-webpack-plugin": "^0.1.10",
+    "css-loader": "^0.24.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "fastclick": "^1.0.6",
+    "file-loader": "^0.9.0",
+    "html-webpack-plugin": "^2.22.0",
+    "jshint": "^2.9.3",
+    "jshint-loader": "^0.8.3",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "particles.js": "^2.0.0",
+    "react-router": "^2.7.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.15.0"
+  },
+  "dependencies": {
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1"
+  }
+}
