@@ -26,12 +26,3 @@ setTimeout(()=>{
 		), DOM.get('king-content'))
 	})	
 },1000)
-// //-- 初始化
-// setTimeout(()=>{
-	// Action.init(()=>{
-		// //-- 开启路由分发
-		// ReactDOM.render((
-			// <Router history={browserHistory} routes = {routes}></Router>
-		// ), DOM.get('king-content'))
-	// })	
-// },1000)
