@@ -1,0 +1,38 @@
+/*
+*	Input
+*/
+@import "../../../../asset/less/base.less";
+@import "../../../less/font.less";
+
+
+.king-input {
+	.WH(240,34);
+	.Lh(34);
+	.fl;
+	padding: 0 5px;
+	border: none;
+	.Fs-s;
+	.CL;
+	margin-left: 10px;
+	border-bottom: 1px solid @light;
+	&:focus {
+		.borderC(@red);
+	}
+}
+.king-input-label {
+	.WH(80,30);
+	.Lh(30);
+	.CB;
+	.Fs-s;
+	.fl;
+	.Tar;
+}
+
+.king-input-warn {
+	.W(240);
+	.CR;
+	.Fs-ss;
+	.fl;
+    margin: 10px 0 0 90px;
+	.Lh(18);
+}

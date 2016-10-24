@@ -1,0 +1,426 @@
+/*
+*	项目的样式
+*/
+@import "../../../asset/less/base.less";
+@import "../../less/font.less";
+
+/*	xs <768px */
+@media screen and (max-width:768px){
+	.sj-home-left {
+		border:none;
+	}
+	.sj-home-out {
+		.Dpn;
+	}
+	.sj-home-footer {
+		padding-bottom:1em;
+		margin-top:1em;
+	}	
+	.sj-home-content {
+		margin-top:20px;
+		padding:10px 20px 20px 20px;
+	}
+}
+/*	xs >=768px */
+@media screen and (min-width:768px){
+	.sj-home-left {
+		border-right:1px solid @line;
+		.Ha;
+	}
+	.sj-home-right {
+		.Ha;
+	}
+	.sj-fullscreen {
+		.Ha;
+	}
+	html,body {
+		.Wa;
+		.Ha;
+		.Pa;
+		top:0;
+		left:0;
+		.Ofh;
+	}
+	.sj-home-footer {
+		.Pa;
+	}
+	.sj-home-title {
+		.Pa;
+		.H(70);
+		h1 {
+			.H(30);
+		}
+		h2 {
+			.H(20);
+		}
+	}	
+	.sj-home-content {
+		margin-top:80px;
+		padding:10px 20px 80px 20px;
+	}
+}
+
+
+
+
+.sj-fullscreen {
+	.Wa;
+	.Pa;
+	top:0;
+	left:0;
+	.Ofh;
+}
+.sj-home-conbox {
+	.Wa;
+	.Ha;
+	.Ofh;
+	.Pr;
+}
+.sj-home-artlist {
+	.Wa;
+	.Ha;
+	overflow-x:hidden;
+	overflow-y:auto;
+	padding:20px 20px 20px 20px;
+	img {
+		.Wa;
+		.Dpb;
+	}
+	li {
+		margin-bottom:20px;
+		padding-bottom:20px;
+		border-bottom:1px dashed @line;
+		.Ofh;
+	}
+	
+	/* 滚动条整体部分 */
+	&::-webkit-scrollbar {
+		.W(2);
+	}
+	/* 滚动条两端的按钮 */
+	&::-webkit-scrollbar-button {
+		.Dpn;
+	}
+	/* 外层轨道 */
+	&::-webkit-scrollbar-track {
+		.Dpn;
+	}
+	/* 内层轨道，滚动条中间部分 */
+	&::-webkit-scrollbar-track-piece {
+		.Bg(@line);
+	}
+	/* 滚动条里面可以拖动的那部分 */
+	&::-webkit-scrollbar-thumb {
+		.Bg(@light);
+	}
+	/* 边角 */
+	&::-webkit-scrollbar-corner {
+		.Dpn;
+	}
+	/* 定义右下角拖动块的样式 */
+	&::-webkit-resizer {
+		.Dpn;
+	}
+	
+}
+
+.sj-home-artlist-title {
+	h1 {
+		.Fs-xl;
+		.CB;
+		.Lh(30);
+	}
+	h2 {
+		.Fs-ss;
+		.CL;
+		.Lh(20);
+	}
+}
+.sj-home-artlist-content {
+	margin-top:20px;
+	a {
+		.Dpt;
+		.Pr;
+		.Ofh;
+		&:hover {
+			.sj-home-artlist-cover {
+				opacity:1;
+			}
+		}
+	}
+}
+.sj-home-artlist-cover {
+	.Pa;
+	top:0;
+	left:0;
+	.Wa;
+	.Ha;
+	.rgba(0,0,0,.6);
+	.CF;
+	padding-top:10%;
+	opacity:0;
+	transition: opacity .3s;
+	-moz-transition: opacity .3s;
+	-webkit-transition: opacity .3s;
+	-o-transition: opacity .3s;
+	h2 {
+		.Fs-l;
+		.Tac;
+	}
+	p {
+		font-style:italic;
+		.Tal;
+		margin-top:5%;
+		padding:0 10%;
+	}
+}
+.sj-home-artlist-qrbox {
+	.Pa;
+	bottom:0;
+	left:50%;
+	.W(80);
+	.Fs-ss;
+	margin-left:-40px;
+	b {
+		letter-spacing:0;
+		.Dpb;
+		.Tac;
+		margin:5px 0;
+	}
+}
+
+.sj-home-title {
+	.Wa;
+	z-index:9999;
+	top:0;
+	.BF;
+	border-bottom:1px solid @line;
+	padding:10px 20px;
+	h1 {
+		.Fs-xl;
+		.CB;
+		.Lh(30);
+	}
+	h2 {
+		.Fs-ss;
+		.CL;
+		.Lh(20);
+	}
+}
+.sj-home-content {
+	.Wa;
+	.Ha;
+	overflow-x:hidden;
+	overflow-y:auto;
+	img {
+		.Wa;
+	}
+	
+
+	/* 滚动条整体部分 */
+	&::-webkit-scrollbar {
+		.W(2);
+	}
+	/* 滚动条两端的按钮 */
+	&::-webkit-scrollbar-button {
+		.Dpn;
+	}
+	/* 外层轨道 */
+	&::-webkit-scrollbar-track {
+		.Dpn;
+	}
+	/* 内层轨道，滚动条中间部分 */
+	&::-webkit-scrollbar-track-piece {
+		.Bg(@line);
+	}
+	/* 滚动条里面可以拖动的那部分 */
+	&::-webkit-scrollbar-thumb {
+		.Bg(@light);
+	}
+	/* 边角 */
+	&::-webkit-scrollbar-corner {
+		.Dpn;
+	}
+	/* 定义右下角拖动块的样式 */
+	&::-webkit-resizer {
+		.Dpn;
+	}
+	
+	
+	
+	
+	
+	
+	
+}
+
+.sj-home-left {
+	.Wa;
+	.Pr;
+}
+.sj-home-right {
+	.Wa;
+	.Pr;
+}
+.sj-home-footer {
+	bottom:10px;
+	padding-left:20px;
+	ol {
+		margin-bottom:1em;
+		.Fs-ss;
+		.CL;
+		li {
+			.H(24);
+			.Lh(24);
+			i {
+				.Fs-m;
+				.H(20);
+				.Lh(20);
+				.fl;
+			}
+			a {
+				.fl;
+				padding-left:5px;
+				.H(20);
+				.Lh(20);
+				.CG;
+				&:hover{
+					.CLink;
+				}
+			}
+		}
+	}
+}
+.sj-home-right-top {
+	padding:40px 20px 0 20px;
+	h2 {
+		.Fs-s;
+		.CB;
+		.H(30);
+		border-bottom:1px solid @line;
+	}
+	ul {
+		margin-top:10px;
+	}
+	li {
+		.CLink;
+		.Fs-ss;
+		.Dpt;
+		padding-left:12px;
+		.Pr;
+		margin-bottom:.5em;
+		i {
+			.Pa;
+			left:0;
+			top:0;
+			.fl;
+			.H(18);
+			.Lh(18);
+		}
+		a {
+			.fl;
+			.CLink;
+			.Lh(18);
+			margin-left:5px;
+			&:hover{
+				text-decoration:underline;
+			}
+		}
+	}
+	p {
+		margin-top:10px;
+		.Fs-ss;
+		.CG;
+		.Lh(20);
+	}
+}
+.sj-home-footer-rights {
+	.Fs-ss;
+	.CL;
+	a {
+		.Fs-ss;
+		.CL;
+	}
+}
+.sj-home-tit {
+	.Fs-s;
+	.Fwb;
+	.Tac;
+	.CB;
+	margin-top:5px;
+}
+.sj-home-out {
+	.Pa;
+	.unSelect;
+	bottom:0;
+	left:50%;
+	.W(40);
+	margin:0 0 20px -20px;
+	.Tac;
+	.Cp;
+	.CG;
+	i{
+		.Fs-xxl;		
+	}
+	b{
+		.Fs(12);
+		.Dpb;
+		.Tac;
+		.H(0);
+		.Lh(12);
+		.Ofh;
+		transition: height .2s;
+		-moz-transition: height .2s;
+		-webkit-transition: height .2s;
+		-o-transition: height .2s;
+	}
+	&:hover{
+		.CR;
+		b {
+			.H(12);
+		}
+		i {
+			.Fs(30);
+		}
+	}
+	&:active{
+		margin-bottom:19px;
+		i {
+			.Fs(28);
+		}
+	}
+}
+.sj-home-nav {
+	margin-top:3em;
+	li {
+		.Wa;
+		.Fs-s;
+		.Tac;
+		height:3em;
+		line-height:3em;
+	}
+	a {
+		.CLink;
+		&:hover{
+			.Bg(@link);
+			.CF;
+		}
+		&:active{
+			.rgba(96,127,166,.6);
+			.CF;
+		}
+		&.active {
+			.Fwb;
+		}
+	}
+}
+
+.sj-home-logo {
+	.center;
+	.W(150);
+	.Dpb;
+	padding-top:40px;
+	img {
+		.W(150);
+	}
+}

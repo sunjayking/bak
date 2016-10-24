@@ -14,11 +14,13 @@ var conf = {
 		env		: true,
 		name	: 'dashboard',
 		entry	: path.resolve(DEV_PATH, 'dashboard/port.jsx'),
+		tpl			: path.resolve(DEV_PATH, 'asset/template/zion.html'),
 	},
     start_zion : {
 		env		: false,
 		name	: 'dashboard',
 		entry	: path.resolve(DEV_PATH, 'dashboard/port.jsx'),
+		tpl			: path.resolve(DEV_PATH, 'asset/template/zion.html'),
 	},
 	build_app : {
 		env		: true,

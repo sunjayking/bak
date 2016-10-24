@@ -17,6 +17,7 @@ var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 var chunk = pro['chunk'] ? new webpack.optimize.CommonsChunkPlugin(pro['chunk']) : new webpack.BannerPlugin('');
 var csstext = pro['css'] ? new ExtractTextPlugin("style.[hash].css") : new webpack.BannerPlugin('');
+var cssType = pro['css'] ? {test: /\.less$/,loader:ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")} : {test: /\.less$/,loaders: ['style','css','less'],}
 
 //-- 日期版本
 var time	= new Date();
@@ -59,10 +60,7 @@ module.exports = {
 				test: /\.css$/,
 				loader: ['style','css'],
 			},
-			{
-				test: /\.less$/,
-				loader: pro['css'] ? ExtractTextPlugin.extract("style-loader", "css-loader!less-loader") : ['style','css','less'],
-			},
+			cssType,
 			{
 				test: /\.(woff|svg|eot|ttf)\??.*$/,
 				loader: 'url?limit=' + ( pro.filesize * 1024 ) + '&name=[path][name].[ext]'
@@ -118,9 +116,9 @@ module.exports = {
 		}),		
 		//-- 功能控制
 		new webpack.DefinePlugin({
-			'process.env': {
-				'NODE_ENV': '"production"'
-			},
+			'process.env': pro.env ? {
+				'NODE_ENV': '"production"' 
+			} : {},
 			__DEBUG__: !pro.env,
 		}),
 		//-- 分离css
