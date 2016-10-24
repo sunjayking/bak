@@ -1,1 +1,0 @@
-start "C:/Progra~1/nodejs/nodevars.bat" npm run start_zion
