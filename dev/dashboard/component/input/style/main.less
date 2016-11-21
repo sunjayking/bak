@@ -4,21 +4,47 @@
 @import "../../../../asset/less/base.less";
 @import "../../../less/font.less";
 
-
+.king-input-box {
+	.Dpi;
+	margin-bottom:15px;
+	.Wa;
+}
 .king-input {
-	.WH(240,34);
+	.H(34);
 	.Lh(34);
 	.fl;
 	padding: 0 5px;
 	border: none;
 	.Fs-s;
-	.CL;
+	.CG;
 	margin-left: 10px;
 	border-bottom: 1px solid @light;
 	&:focus {
-		.borderC(@red);
+		border: 1px solid @red;
+		.BF;
+	}
+	&.large {
+		.W(430);
+	}
+	&.normal {
+		.W(240);
 	}
 }
+.king-textarea {
+	.WH(430,120);
+	.Lh(20);
+	.fl;
+	padding: 5px;
+	.Fs-s;
+	.CG;
+	margin-left: 10px;
+	border: 1px solid @light;
+	&:focus {
+		.borderC(@red);
+		.BF;
+	}
+}
+
 .king-input-label {
 	.WH(80,30);
 	.Lh(30);
@@ -26,6 +52,9 @@
 	.Fs-s;
 	.fl;
 	.Tar;
+	b {
+		.CR;
+	}
 }
 
 .king-input-warn {
@@ -35,4 +64,17 @@
 	.fl;
     margin: 10px 0 0 90px;
 	.Lh(18);
+}
+.king-upimg-tip {
+	.CL;
+	.Fs-ss;
+	.fl;
+    margin: 10px 0 0 90px;
+	.Lh(18);
+	clear:both;
+}
+.king-upimg-box {
+	.BF;
+	.fl;
+	margin-left:10px;
 }

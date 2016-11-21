@@ -3,12 +3,13 @@
 */
 import { Row, Col }		from './layout'
 import { Img }		from './img'
-import { Input }	from './input'
+import { Input, Textarea, Upimg }	from './input'
 import { Button }	from './button'
 import { Form }		from './form'
-// import Box		from './box'
-// import Logo		from './logo'
-// import Text		from './text'
+import { Dialog, Tip }		from './dialog'
+import { Tab }		from './tab'
+import { Table }		from './table'
+import { Loading }		from './loading'
 
 export {
 	Row,
@@ -16,8 +17,12 @@ export {
 	Img,
 	Form,
 	Input,
+	Textarea,
+	Upimg,
 	Button,
-	// Box,
-	// Logo,
-	// Text,
+	Dialog,
+	Tip,
+	Tab,
+	Table,
+	Loading,
 }

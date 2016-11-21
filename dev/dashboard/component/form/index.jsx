@@ -1,5 +1,5 @@
 /*
-*	Input 组件
+*	Form 组件
 */
 import React from 'react'
 import ClassName from 'classnames'
@@ -19,7 +19,7 @@ class Form extends React.Component {
 	render(){
 		const { label, tip, length, type, name, warn } = this.props
 		return (
-			<div>
+			<div className='king-form-box'>
 				{this.props.children}
 			</div>
 		)

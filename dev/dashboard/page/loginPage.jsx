@@ -8,12 +8,7 @@ class LoginPage extends React.Component {
 		super(props)
 	}
 	//-- 初始
-	componentDidMount(){
-		//-- 登录页的灰色背景
-		DOM.setAttr(DOM.getTag('body'),'style','background:#f5f5f5')
-		//-- 自动focus到输入框
-		DOM.focus('key')
-	}
+	componentDidMount(){}
 	//-- 更新
 	componentDidUpdate(){}
 	//-- 移除

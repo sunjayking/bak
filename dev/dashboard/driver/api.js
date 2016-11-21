@@ -1,8 +1,12 @@
 const api = {
-	session			: '/api/session',			//-- 获取session
-	albumdet		: '/api/album/det',			//-- 获取专辑详情
+	session		: '/api/session',		//-- session
+	login		: '/api/login',			//-- 登录
+	logout		: '/api/logout',		//-- 退出
+	admin		: '/api/admin',			//-- 管理员
+	article		: '/api/article',		//-- 文章
 }
 
+import {_} from 'sun-king'
 //-- ajax请求，不公开
 const Ajax = () => {
 	var ajax = {
@@ -25,7 +29,7 @@ const Ajax = () => {
 			if(XML.readyState == 4){
 				var res = XML.responseText				
 				try{
-					res = JSON.parse(res)
+					res = res ? JSON.parse(res) : ''
 				}catch(e){
 					__DEBUG__ && console.warn('返回数据不为JSON')
 					option.error('')
@@ -53,12 +57,19 @@ const Ajax = () => {
 		option.error		= option.error			|| function(){}
 		option.success		= option.success		|| function(){}
 		option.type			= option.type			|| 'POST'
-		option.data			= JSON.stringify(option.data)
+		option.data			= option.data			|| {}
 		let newapi = option.api
+		
 		if(option.type === 'GET'){
-			var data = option.data || ''
-			newapi = option.data ? option.api + '&' + option.data : option.api
+			let dataArr = []
+			_.eachProp(option.data,function(value,name){
+				dataArr.push(name+'='+value)
+			})
+			newapi = option.api + '/' + dataArr.join('&')
+		}else{
+			option.data = JSON.stringify(option.data)
 		}
+		
 		xml.open(option.type,newapi,option.async);
 		xml.setRequestHeader("Content-Type",option.contentType);
 		xml.onreadystatechange = function(){
@@ -69,10 +80,11 @@ const Ajax = () => {
 }
 //-- AJAX实例
 const AJAX = Ajax()
-const GET = (option)=>{
+
+const ajaxing = (type,option)=>{
 	const { url, data, success, error } = option
 	AJAX({
-		type : 'GET',
+		type : type,
 		api : api[url],
 		data : data,
 		success : success,
@@ -80,4 +92,23 @@ const GET = (option)=>{
 	})
 }
 
-export { GET }
+//-- GET
+const GET = (option)=>{
+	ajaxing('GET',option)
+}
+
+//-- DELETE
+const DELETE = (option)=>{
+	ajaxing('DELETE',option)
+}
+
+//-- PUT
+const PUT = (option)=>{
+	ajaxing('PUT',option)
+}
+//-- POST
+const POST = (option)=>{
+	ajaxing('POST',option)
+}
+
+export { GET, DELETE, PUT, POST }

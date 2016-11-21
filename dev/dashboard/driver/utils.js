@@ -9,7 +9,13 @@ const GO = (data,type) => {
 	}
 }
 
+//-- 返回上一页
+const Back = () => {
+	browserHistory.goBack()
+}
+
 
 export {
 	GO,
+	Back
 }

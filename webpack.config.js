@@ -134,14 +134,14 @@ module.exports = {
 		hot			: true,
 		inline		: true,
 		progress	: true,
-		// //-- 代理
-		// proxy: {
-			// '/api/*': {
-				// "target" : {
-					// "host"  : pro.host,
-					// "port"	: pro.port
-				// },
-			// },
-		// },
+		//-- 代理
+		proxy: {
+			'/api/*': {
+				"target" : {
+					"host"  : pro.host,
+					"port"	: pro.port
+				},
+			},
+		},
 	},
 }

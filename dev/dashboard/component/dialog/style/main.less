@@ -1,0 +1,72 @@
+/*
+*	Input
+*/
+@import "../../../../asset/less/base.less";
+@import "../../../less/font.less";
+
+.sun-tips {
+	.BR;
+	.CF;
+	padding:1em;
+	.Dpi;
+	.W(300);
+    left: 50%;
+    top: 20px;
+	.Pa;
+    z-index: 999;
+    margin-left: -150px;
+}
+
+.sun-dialog {
+	.rgba(0,0,0,.2);
+	.Wa;
+	.Ha;
+	.Pa;
+	left:0;
+	top:0;
+	z-index:999;
+}
+
+.sun-dialog-box {
+	.BF;
+	.W(400);
+	.Pa;
+	left:50%;
+	margin-left:-200px;
+	top:30%;
+	p {
+		padding:2em 1em;
+		.Fs-s;
+		border-bottom:1px solid @line;
+	}
+	ol {
+		.Wa;
+		.H(40);
+		.Tar;
+		padding-right:1em;
+		li {
+			.Dpi;
+			&:first-child{
+				a{
+					.CL;
+				}
+			}
+			&:last-child{
+				a{
+					.CR;
+				}
+			}
+		}
+		a {
+			.Fs-m;
+			.H(30);
+			.Lh(30);
+			.Dpi;
+			.Cp;
+			margin:5px 0 0 2em;
+			&:hover {
+				.Fwb;
+			}
+		}
+	}
+}

@@ -3,21 +3,27 @@
 */
 @import "../../../../asset/less/base.less";
 @import "../../../less/font.less";
-
 .king-button {
 	.fl;
-	.clearB;
+	/* .clearB; */
 	.Cp;
 	.Fwb;
 	.unSelect;
 	margin:20px 0 0 90px;
-	.CR;
 	.Fs-l;	
+	&:active{
+		.rgba(233,111,93,.6);
+	}
+	&.primary {
+		.CR;
+	}
+	&.default {
+		.CL;
+	}
+}
+.king-button-hover {
 	&:hover{
 		.BR;
 		.CF;
-	}
-	&:active{
-		.rgba(233,111,93,.6);
 	}
 }

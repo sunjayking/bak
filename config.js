@@ -36,7 +36,19 @@ var conf = {
 			],
 		},
 		chunk	: {names:['react','utils'],filename:'/[name].[hash].js'},
-	}
+	},
+    build_litterfreddie : {
+		env		: true,
+		name	: 'litterfreddie',
+		entry	: path.resolve(DEV_PATH, 'litterfreddie/port.jsx'),
+		tpl			: path.resolve(DEV_PATH, 'litterfreddie/index.html'),
+	},
+    start_litterfreddie : {
+		env		: false,
+		name	: 'litterfreddie',
+		entry	: path.resolve(DEV_PATH, 'litterfreddie/port.jsx'),
+		tpl			: path.resolve(DEV_PATH, 'litterfreddie/index.html'),
+	},
 }
 
 

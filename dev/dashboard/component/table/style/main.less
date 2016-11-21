@@ -1,0 +1,54 @@
+/*
+*	Button
+*/
+@import "../../../../asset/less/base.less";
+@import "../../../less/font.less";
+
+.king-table {
+	.Wa;
+	margin-top:20px;
+	border:1px solid @line;
+	thead {
+		.Bg(@line);
+		th{
+			.Fwb;
+			border-right:1px solid @white;
+			border-bottom:1px solid @white;
+			&:last-child {
+				border-right:none;
+			}
+		}
+	}
+	tbody {
+		.BF;
+		tr {
+			&:hover {
+				.Bgrey;
+			}
+		}
+		td {
+			border-right:1px solid @line;			
+			border-bottom:1px solid @line;
+			&:last-child {
+				border-right:none;
+			}
+			a {
+				.Fs-ss;
+				.CLink;
+				margin-right:1em;
+				.Cp;
+				&:hover{
+					.Bg(@link);
+					.CF;
+				}
+			}
+		}
+	}
+	td,th {
+		padding:0.5em;
+	}
+}
+.king-table-empty {
+	.Tac;
+	.H(80);
+}

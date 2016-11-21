@@ -21,7 +21,7 @@ class WarningMod extends React.Component {
 				<Img src='http://img.romanote.com/web/sunjay_logo_word.png' />
 				<h2>{title}</h2>
 				<h3>{content}</h3>
-				<Link to={link} dangerouslySetInnerHTML={{__html:linkName}}></Link>
+				<a href={link} dangerouslySetInnerHTML={{__html:linkName}}></a>
 			</div>
 		)
 	}
