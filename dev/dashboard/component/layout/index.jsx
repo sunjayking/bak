@@ -3,19 +3,12 @@
 */
 import React from 'react'
 import ClassName from 'classnames'
-import { _ } from 'sun-king'
 import './style/main.less'
 
 class Row extends React.Component {
 	constructor(props) {
 		super(props)
 	}
-	//-- 初始
-	componentDidMount(){}
-	//-- 更新
-	componentDidUpdate(){}
-	//-- 移除
-	componentWillUnmount(){}
 	render(){
 		return (
 			<div className='king-row'>

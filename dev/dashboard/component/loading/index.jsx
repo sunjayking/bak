@@ -9,12 +9,6 @@ class Loading extends React.Component {
 	constructor(props) {
 		super(props)
 	}
-	//-- 初始
-	componentDidMount(){}
-	//-- 更新
-	componentDidUpdate(){}
-	//-- 移除
-	componentWillUnmount(){}
 	render(){
 		const { con } = this.props
 		return (

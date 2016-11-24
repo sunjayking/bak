@@ -1,8 +1,8 @@
 /*
 *	Input
 */
-@import "../../../../asset/less/base.less";
-@import "../../../less/font.less";
+@import (reference) "../../../../asset/less/base.less";
+@import (reference) "../../../less/font.less";
 
 .king-input-box {
 	.Dpi;
@@ -77,4 +77,26 @@
 	.BF;
 	.fl;
 	margin-left:10px;
+	.Cp;
+	.Pr;
+	z-index:2;
+	background-repeat:no-repeat;
+	background-size:cover;
+	input {
+		.W(0);
+		.H(0);
+		.opacity(0);
+		.Dpn;
+	}
+}
+.king-upimg-img {
+	.Wa;
+	.Ha;
+	.Pa;
+	left:0;
+	top:0;
+	z-index:3;
+	&:hover{
+		.rgba(0,0,0,.4);
+	}
 }

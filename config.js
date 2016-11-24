@@ -3,7 +3,7 @@ var DEV_PATH	= path.resolve(__dirname) + '/dev';
 var conf = {
 	//-- 默认值
 	def : {
-		filesize	: 60,		//-- 单位kb，图片、字体的压缩上线，超过此值的不压缩
+		filesize	: 1,		//-- 单位kb，图片、字体的压缩上线，超过此值的不压缩
 		port		: 80,		//-- 端口
 		host		: 'zi.on',	//-- 这个基本上不会变了	
 		tpl			: path.resolve(DEV_PATH, 'asset/template/tpl.html'),
@@ -13,8 +13,19 @@ var conf = {
     build_zion : {
 		env		: true,
 		name	: 'dashboard',
-		entry	: path.resolve(DEV_PATH, 'dashboard/port.jsx'),
 		tpl			: path.resolve(DEV_PATH, 'asset/template/zion.html'),
+		entry	: {			//-- 入口文件	
+			app		: path.resolve(DEV_PATH, 'dashboard/port.jsx'),
+			utils	: [
+				'sun-king',
+				'classnames',
+				'react',
+				'react-router',
+				'react-dom'
+			],
+		},
+		chunk	: {names:['utils'],filename:'/[name].[hash].js'},
+		css : true
 	},
     start_zion : {
 		env		: false,
@@ -36,18 +47,6 @@ var conf = {
 			],
 		},
 		chunk	: {names:['react','utils'],filename:'/[name].[hash].js'},
-	},
-    build_litterfreddie : {
-		env		: true,
-		name	: 'litterfreddie',
-		entry	: path.resolve(DEV_PATH, 'litterfreddie/port.jsx'),
-		tpl			: path.resolve(DEV_PATH, 'litterfreddie/index.html'),
-	},
-    start_litterfreddie : {
-		env		: false,
-		name	: 'litterfreddie',
-		entry	: path.resolve(DEV_PATH, 'litterfreddie/port.jsx'),
-		tpl			: path.resolve(DEV_PATH, 'litterfreddie/index.html'),
 	},
 }
 

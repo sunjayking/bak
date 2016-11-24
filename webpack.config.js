@@ -16,7 +16,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 var chunk = pro['chunk'] ? new webpack.optimize.CommonsChunkPlugin(pro['chunk']) : new webpack.BannerPlugin('');
-var csstext = pro['css'] ? new ExtractTextPlugin("style.[hash].css") : new webpack.BannerPlugin('');
+var csstext = pro['css'] ? new ExtractTextPlugin("/style.[hash].css") : new webpack.BannerPlugin('');
 var cssType = pro['css'] ? {test: /\.less$/,loader:ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")} : {test: /\.less$/,loaders: ['style','css','less'],}
 
 //-- 日期版本
@@ -63,7 +63,7 @@ module.exports = {
 			cssType,
 			{
 				test: /\.(woff|svg|eot|ttf)\??.*$/,
-				loader: 'url?limit=' + ( pro.filesize * 1024 ) + '&name=[path][name].[ext]'
+				loader: 'url?limit=' + ( pro.filesize * 1024 ) + '&name=/font/[name].[hash].[ext]'
 			},
 			{
 				test: /\.jsx?$/,
@@ -103,6 +103,17 @@ module.exports = {
 		}),
 		//-- 把入口文件里面的数组打包
 		chunk,
+		//-- 功能控制
+		new webpack.DefinePlugin({
+			'process.env': pro.env ? {
+				'NODE_ENV': '"production"' 
+			} : {},
+			__DEBUG__: !pro.env,
+		}),
+		//-- 发布前先清空目录
+		new CleanWebpackPlugin([BUILD_PATH], {
+			root: process.cwd()  
+		}),
 		//-- 压缩js
 		new webpack.optimize.UglifyJsPlugin({
 			compress: {
@@ -113,20 +124,11 @@ module.exports = {
 				comments: false, 
 			},
 			minimize: true
-		}),		
-		//-- 功能控制
-		new webpack.DefinePlugin({
-			'process.env': pro.env ? {
-				'NODE_ENV': '"production"' 
-			} : {},
-			__DEBUG__: !pro.env,
 		}),
 		//-- 分离css
 		csstext,
-		//-- 发布前先清空目录
-		new CleanWebpackPlugin([BUILD_PATH], {
-			root: process.cwd()  
-		})
+		new webpack.optimize.DedupePlugin()
+		// new webpack.optimize.OccurenceOrderPlugin()
 	],
 	//-- 【开发环境】服务器 
 	devServer: {

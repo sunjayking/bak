@@ -4,6 +4,7 @@ const api = {
 	logout		: '/api/logout',		//-- 退出
 	admin		: '/api/admin',			//-- 管理员
 	article		: '/api/article',		//-- 文章
+	image		: '/api/image',			//-- 图片
 }
 
 import {_} from 'sun-king'
@@ -67,7 +68,9 @@ const Ajax = () => {
 			})
 			newapi = option.api + '/' + dataArr.join('&')
 		}else{
-			option.data = JSON.stringify(option.data)
+			if(option.contentType != 'multipart/form-data'){
+				option.data = JSON.stringify(option.data)
+			}
 		}
 		
 		xml.open(option.type,newapi,option.async);
@@ -82,13 +85,14 @@ const Ajax = () => {
 const AJAX = Ajax()
 
 const ajaxing = (type,option)=>{
-	const { url, data, success, error } = option
+	const { url, data, success, error, contentType } = option
 	AJAX({
 		type : type,
 		api : api[url],
 		data : data,
 		success : success,
-		error : error
+		error : error,
+		contentType : contentType
 	})
 }
 

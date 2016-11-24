@@ -69,7 +69,7 @@ class LoginMod extends React.Component {
 					<Form>
 						<Input
 							label='Key'
-							tip='Enter sunjay`s key'
+							tip='sunjay提供的key'
 							length='24'
 							type='password'
 							name='key'

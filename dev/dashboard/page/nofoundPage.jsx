@@ -6,12 +6,6 @@ class NofoundPage extends React.Component {
 	constructor(props) {
 		super(props)
 	}
-	//-- 初始
-	componentDidMount(){}
-	//-- 更新
-	componentDidUpdate(){}
-	//-- 移除
-	componentWillUnmount(){}
 	render(){
 		return (
 			<WarningMod
@@ -21,6 +15,7 @@ class NofoundPage extends React.Component {
 				linkName = '<返回首页'
 			/>
 		)
+		return null
 	}
 }
 

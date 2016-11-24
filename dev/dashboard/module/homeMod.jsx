@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col, Img, Input, Button, Form, Dialog, Tip } from '../component'
+import { Row, Col, Img, Dialog, Tip } from '../component'
 import { Link } from 'react-router'
 import { GET } from '../driver/api'
 import { Store } from 'sun-king'
@@ -11,12 +11,6 @@ class HomeMod extends React.Component {
 	constructor(props) {
 		super(props)
 	}
-	//-- 初始
-	componentDidMount(){}
-	//-- 更新
-	componentDidUpdate(){}
-	//-- 移除
-	componentWillUnmount(){}
 	render(){
 		const { type,content } = this.props
 		return (
@@ -42,12 +36,6 @@ class HomeLeftMod extends React.Component {
 	constructor(props) {
 		super(props)
 	}
-	//-- 初始
-	componentDidMount(){}
-	//-- 更新
-	componentDidUpdate(){}
-	//-- 移除
-	componentWillUnmount(){}
 	//-- 退出
 	out(){
 		Dialog('你将要退出Sunjay后台。',{
@@ -110,12 +98,6 @@ class HomeRightMod extends React.Component {
 	constructor(props) {
 		super(props)
 	}
-	//-- 初始
-	componentDidMount(){}
-	//-- 更新
-	componentDidUpdate(){}
-	//-- 移除
-	componentWillUnmount(){}
 	render(){
 		const { customer, linkList } = this.props
 		let title = customer ? '温馨提示' : '推荐文章'

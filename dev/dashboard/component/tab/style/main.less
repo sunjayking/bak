@@ -1,8 +1,8 @@
 /*
 *	Button
 */
-@import "../../../../asset/less/base.less";
-@import "../../../less/font.less";
+@import (reference) "../../../../asset/less/base.less";
+@import (reference) "../../../less/font.less";
 
 .king-tab {
 	.Wa;
@@ -31,11 +31,15 @@
 .king-tab-right {
 	.fr;
 	.Dpi;
-	padding: 1em 0 0.5em 0;
+	padding: 0.2em 0.5em;
+	margin-top:0.5em;
 	.Fs-s;
 	.Cp;
 	.Fwb;
+	border:1px solid @light;
 	&:hover {
-		.CR;
+		.BR;
+		.CF;
+		border-color:@red;
 	}
 }

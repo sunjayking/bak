@@ -22,10 +22,6 @@ class Tipbox extends React.Component {
 			self.setState({hide:true})
 		},this.props.time)
 	}
-	//-- 更新
-	componentDidUpdate(){}
-	//-- 移除
-	componentWillUnmount(){}
 	render(){
 		const { con } = this.props
 		let classTip = ClassName({
@@ -49,17 +45,6 @@ class Dialogbox extends React.Component {
 			hide : false
 		}
 	}
-	//-- 初始
-	componentDidMount(){
-		// let self = this
-		// setTimeout(()=>{
-			// self.setState({hide:true})
-		// },this.props.time)
-	}
-	//-- 更新
-	componentDidUpdate(){}
-	//-- 移除
-	componentWillUnmount(){}
 	ok(func){
 		this.setState({hide:true})
 		setTimeout(()=>{
@@ -87,12 +72,12 @@ class Dialogbox extends React.Component {
 		})
 		
 		let domOk = {
-			name : ok.name || 'Ok',
+			name : ok.name || '好的',
 			func : ok.func || function(){}
 		}
 		
 		let domCancel = {
-			name : cancel.name || 'Cancel',
+			name : cancel.name || '取消',
 			func : cancel.func || function(){}
 		}
 		

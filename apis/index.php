@@ -1,5 +1,10 @@
 <?php
-	session_start();
+	session_start(); 
+	ini_set('session.save_path','/tmp/');
+	ini_set('session.gc_maxlifetime',21600);
+	$lifeTime = 6 * 3600;
+	setcookie(session_name(), session_id(), time() + $lifeTime, "/");
+
 	//-- 路径
 	define('PATH',str_replace('\\','/',dirname(dirname(__FILE__)).'/apis/'));			//-- 基础路径
 	define('PATH_MODULE',	PATH.'Module/');							//-- 应用路径

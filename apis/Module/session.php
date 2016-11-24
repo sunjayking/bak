@@ -9,7 +9,7 @@ class session extends Virgin {
 	}
 	private function GET(){
 		if(!isset($_SESSION) || !count($_SESSION)){
-			self::fail404();
+			self::fail404(40005,'无session');
 		}else{
 			exit(self::JSON($_SESSION));			
 		}

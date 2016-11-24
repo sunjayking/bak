@@ -13,12 +13,6 @@ class Button extends React.Component {
 			status : 'init'
 		}
 	}
-	//-- 初始
-	componentDidMount(){}
-	//-- 更新
-	componentDidUpdate(){}
-	//-- 移除
-	componentWillUnmount(){}
 	done(){
 		this.props.activeName && this.setState({status:'done'})
 	}

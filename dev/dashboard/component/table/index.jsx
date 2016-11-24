@@ -13,12 +13,6 @@ class Table extends React.Component {
 			token : ''
 		}
 	}
-	//-- 初始
-	componentDidMount(){}
-	//-- 更新
-	componentDidUpdate(){}
-	//-- 移除
-	componentWillUnmount(){}
 	render(){
 		const { headList=[], conList=[] } = this.props
 		let head = headList.map((val,i)=>{

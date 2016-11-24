@@ -78,6 +78,7 @@
 		public function isEmpty($data,$array){
 			foreach($array as $key => $v){
 				!isset($data->$v) && self::fail404(40001,$v.'为空');
+				$data->$v == '' && self::fail404(40001,$v.'为空');
 			}
 		}
 	}

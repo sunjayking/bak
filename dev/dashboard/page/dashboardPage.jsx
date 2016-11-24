@@ -1,6 +1,6 @@
 import React from 'react'
 import { HomeMod } from '../module/homeMod'
-import { ArticlelistMod, ArticleaddMod } from '../module/articleMod'
+import { ArticlelistMod, ArticleaddMod, ArticleeditMod } from '../module/articleMod'
 import { Store } from 'sun-king'
 import { GET } from '../driver/api'
 import { GO } from '../driver/utils'
@@ -20,17 +20,14 @@ class DashboardPage extends React.Component {
 		GET({
 			url : 'session',
 			success : (res)=>{
-				self.props.params.mid != res.admin.info.name && GO('/dashboard/' + res.admin.info.name)
+				let name = res.admin.info.name
+				self.props.params.mid != name && GO('/dashboard/' + name)
 			},
 			error : (res)=>{
 				GO('/login')
 			}
 		})
 	}
-	//-- 更新
-	componentDidUpdate(){}
-	//-- 移除
-	componentWillUnmount(){}
 	render(){
 		const admin = Store.get('admin')
 		const { id } = this.props.params
@@ -39,6 +36,7 @@ class DashboardPage extends React.Component {
 		const childMod = {
 			article		: (<ArticlelistMod {...this.props}/>),
 			articleadd	: (<ArticleaddMod {...this.props}/>),
+			articleedit	: (<ArticleeditMod {...this.props}/>),
 		}
 		
 		//-- 定义内容

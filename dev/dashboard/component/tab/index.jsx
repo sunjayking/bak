@@ -3,7 +3,6 @@
 */
 import React from 'react'
 import ClassName from 'classnames'
-import { _ } from 'sun-king'
 import './style/main.less'
 
 class Tab extends React.Component {
@@ -13,12 +12,6 @@ class Tab extends React.Component {
 			token : ''
 		}
 	}
-	//-- 初始
-	componentDidMount(){}
-	//-- 更新
-	componentDidUpdate(){}
-	//-- 移除
-	componentWillUnmount(){}
 	tab(token,func){
 		this.setState({token:token})
 		func(token)
