@@ -10,12 +10,47 @@ var conf = {
 		css			: false,
 		chunk		: false,
 	},
+	
+//==============================================================================================
+	//-- sunjay后台发布
     build_zion : {
 		env		: true,
 		name	: 'dashboard',
-		tpl			: path.resolve(DEV_PATH, 'asset/template/zion.html'),
+		tpl			: path.resolve(DEV_PATH, 'asset/template/sunjay.html'),
 		entry	: {			//-- 入口文件	
 			app		: path.resolve(DEV_PATH, 'dashboard/port.jsx'),
+			utils	: [
+				'sun-king',
+				'classnames',
+				'react',
+				'react-router',
+				'react-dom'
+			],
+			editor	: [
+				path.resolve(DEV_PATH, 'dashboard/component/input/editor/ueditor.config.js'),
+				path.resolve(DEV_PATH, 'dashboard/component/input/editor/ueditor.js'),
+				path.resolve(DEV_PATH, 'dashboard/component/input/editor/zh-cn.js')
+			]
+		},
+		chunk	: {names:['utils','editor'],filename:'/[name].[hash].js'},
+		css : true
+	},
+	//-- sunjay后台开发
+    start_zion : {
+		env		: false,
+		name	: 'dashboard',
+		entry	: path.resolve(DEV_PATH, 'dashboard/port.jsx'),
+		tpl			: path.resolve(DEV_PATH, 'asset/template/sunjay.html'),
+	},
+	
+//==============================================================================================
+	//-- sunjay官网发布
+    build_blog : {
+		env		: true,
+		name	: 'blog',
+		tpl			: path.resolve(DEV_PATH, 'asset/template/sunjay.html'),
+		entry	: {			//-- 入口文件	
+			app		: path.resolve(DEV_PATH, 'blog/port.jsx'),
 			utils	: [
 				'sun-king',
 				'classnames',
@@ -27,27 +62,34 @@ var conf = {
 		chunk	: {names:['utils'],filename:'/[name].[hash].js'},
 		css : true
 	},
-    start_zion : {
+	//-- sunjay官网开发
+    start_blog : {
 		env		: false,
-		name	: 'dashboard',
-		entry	: path.resolve(DEV_PATH, 'dashboard/port.jsx'),
-		tpl			: path.resolve(DEV_PATH, 'asset/template/zion.html'),
+		name	: 'blog',
+		entry	: path.resolve(DEV_PATH, 'blog/port.jsx'),
+		tpl			: path.resolve(DEV_PATH, 'asset/template/sunjay.html'),
 	},
-	build_app : {
+	
+//==============================================================================================
+	//-- romanote官网发布
+    build_romanote : {
 		env		: true,
-		name	: 'roman_app',
-		entry	: {			//-- 入口文件	
-			app		: path.resolve(DEV_PATH, 'port.jsx'),
-			react	: ['react','react-dom','react-router'],
-			utils	: [
-				path.resolve(DEV_PATH, 'drivers/action.js'),
-				path.resolve(DEV_PATH, 'utils/dom.js'),
-				path.resolve(DEV_PATH, 'utils/store.js'),
-				'fastclick'
-			],
-		},
-		chunk	: {names:['react','utils'],filename:'/[name].[hash].js'},
+		name	: 'romanote',
+		tpl			: path.resolve(DEV_PATH, 'asset/template/romanote.html'),
+		entry	: path.resolve(DEV_PATH, 'romanote/port.jsx'),
+		// css : true
 	},
+	//-- romanote官网开发
+    start_romanote : {
+		env		: false,
+		name	: 'romanote',
+		entry	: path.resolve(DEV_PATH, 'romanote/port.jsx'),
+		tpl			: path.resolve(DEV_PATH, 'asset/template/romanote.html'),
+	},
+	
+	
+	
+	
 }
 
 

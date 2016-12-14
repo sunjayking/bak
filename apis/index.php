@@ -1,5 +1,5 @@
 <?php
-	session_start(); 
+	session_start();
 	ini_set('session.save_path','/tmp/');
 	ini_set('session.gc_maxlifetime',21600);
 	$lifeTime = 6 * 3600;

@@ -59,12 +59,15 @@ class HomeLeftMod extends React.Component {
 	}
 	render(){
 		const { slogan, navList, login } = this.props
+		let pathname = this.props.location.pathname
 		let content = navList.map((value,i)=>{
 			return (
 				<li key={i}>
 					{
 						!value.outside
-						? <Link to={value.url} className={value.active?'active':''}>{value.name}</Link>
+						? value.url == pathname
+							? <a className={value.active?'active':''}>{value.name}</a>
+							: <Link to={value.url} className={value.active?'active':''}>{value.name}</Link>
 						: <a href={value.url} className={value.active?'active':''} target='_blank'>{value.name}</a>
 					}
 				</li>
@@ -81,7 +84,7 @@ class HomeLeftMod extends React.Component {
 		return (
 			<div className='sj-home-left'>
 				<span className='sj-home-logo'>
-					<Img src='http://img.romanote.com/web/sunjay_logo_word.png' />
+					<Img src='http://asset.sunjay.cn/img/web/sunjay_logo_word.png' />
 				</span>
 				<p className='sj-home-tit'>{slogan||'游荡的Freelancer'}</p>
 				<ul className='sj-home-nav'>
@@ -122,6 +125,9 @@ class HomeRightMod extends React.Component {
 				</div>
 				<div className='sj-home-footer'>
 					<ol>
+						<span className='sj-footer-showqr'>
+							<Img src='http://asset.sunjay.cn/img/web/sunjayking_wechat.jpg' />
+						</span>
 						<li>
 							<i className='icon-wechat'></i>
 							<a>sunjayking</a>

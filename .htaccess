@@ -3,16 +3,17 @@
 RewriteEngine On
 
 ## admin
-RewriteRule ^login(.*)$ /www/dashboard/20161123/index.html [L]
-RewriteRule ^dashboard(.*)$ /www/dashboard/20161123/index.html [L]
-RewriteRule ^asset/(.*)$ /www/dashboard/20161123/asset/$1 [R,L]
-#RewriteRule ^blog(.*)$ /www/dashboard/20161123/index.html [L]
-#RewriteRule ^utils\.(.*)$ /www/dashboard/20161123/utils.$1 [L]
-#RewriteRule ^react\.(.*)$ /www/dashboard/20161123/react.$1 [L]
-#RewriteRule ^app\.(.*)$ /www/dashboard/20161123/app.$1 [L]
-#RewriteRule ^dom\.(.*)$ /www/dashboard/20161123/dom.$1 [L]
-#RewriteRule ^style\.(.*)$ /www/dashboard/20161123/style.$1 [L]
-#RewriteRule ^font/(.*)$ /www/dashboard/20161123/font/$1 [L]
+RewriteRule ^login(.*)$ /www/dashboard/20161127/index.html [L]
+RewriteRule ^dashboard(.*)$ /www/dashboard/20161127/index.html [L]
+RewriteRule ^asset/(.*)$ /www/dashboard/20161127/asset/$1 [R,L]
+RewriteRule ^blog(.*)$ /www/dashboard/20161127/index.html [L]
+RewriteRule ^utils\.(.*)$ /www/dashboard/20161127/utils.$1 [L]
+RewriteRule ^editor\.(.*)$ /www/dashboard/20161127/utils.$1 [L]
+RewriteRule ^react\.(.*)$ /www/dashboard/20161127/react.$1 [L]
+RewriteRule ^app\.(.*)$ /www/dashboard/20161127/app.$1 [L]
+RewriteRule ^dom\.(.*)$ /www/dashboard/20161127/dom.$1 [L]
+RewriteRule ^style\.(.*)$ /www/dashboard/20161127/style.$1 [L]
+RewriteRule ^font/(.*)$ /www/dashboard/20161127/font/$1 [L]
 
 # api重定向到apis/index.php
 RewriteRule ^api/(.*)/(.*)$ /apis/index.php?module=$1&$2 [L]

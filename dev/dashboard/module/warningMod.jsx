@@ -11,7 +11,7 @@ class WarningMod extends React.Component {
 		const { title, content, link, linkName} = this.props
 		return (
 			<div className='sj-nofound'>
-				<Img src='http://img.romanote.com/web/sunjay_logo_word.png' />
+				<Img src='http://asset.sunjay.cn/img/web/sunjay_logo_word.png' />
 				<h2>{title}</h2>
 				<h3>{content}</h3>
 				<a href={link} dangerouslySetInnerHTML={{__html:linkName}}></a>

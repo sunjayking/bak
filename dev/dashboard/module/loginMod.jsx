@@ -87,7 +87,7 @@ class LoginMod extends React.Component {
 		return (
 			<div className='sj-login'>
 				<span className='sj-logo-index'>
-					<Img src='http://img.romanote.com/web/sunjay_logo.png' />
+					<Img src='http://asset.sunjay.cn/img/web/sunjay_logo.png' />
 				</span>
 				<div className='sj-login-box'>
 					{content}

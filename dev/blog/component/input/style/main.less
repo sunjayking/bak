@@ -1,0 +1,102 @@
+/*
+*	Input
+*/
+@import (reference) "../../../../asset/less/base.less";
+@import (reference) "../../../less/font.less";
+
+.king-input-box {
+	.Dpi;
+	margin-bottom:15px;
+	.Wa;
+}
+.king-input {
+	.H(34);
+	.Lh(34);
+	.fl;
+	padding: 0 5px;
+	border: none;
+	.Fs-s;
+	.CG;
+	margin-left: 10px;
+	border-bottom: 1px solid @light;
+	&:focus {
+		border: 1px solid @red;
+		.BF;
+	}
+	&.large {
+		.W(430);
+	}
+	&.normal {
+		.W(240);
+	}
+}
+.king-textarea {
+	.WH(430,120);
+	.Lh(20);
+	.fl;
+	padding: 5px;
+	.Fs-s;
+	.CG;
+	margin-left: 10px;
+	border: 1px solid @light;
+	&:focus {
+		.borderC(@red);
+		.BF;
+	}
+}
+
+.king-input-label {
+	.WH(80,30);
+	.Lh(30);
+	.CB;
+	.Fs-s;
+	.fl;
+	.Tar;
+	b {
+		.CR;
+	}
+}
+
+.king-input-warn {
+	.W(240);
+	.CR;
+	.Fs-ss;
+	.fl;
+    margin: 10px 0 0 90px;
+	.Lh(18);
+}
+.king-upimg-tip {
+	.CL;
+	.Fs-ss;
+	.fl;
+    margin: 10px 0 0 90px;
+	.Lh(18);
+	clear:both;
+}
+.king-upimg-box {
+	.BF;
+	.fl;
+	margin-left:10px;
+	.Cp;
+	.Pr;
+	z-index:2;
+	background-repeat:no-repeat;
+	background-size:cover;
+	input {
+		.W(0);
+		.H(0);
+		.opacity(0);
+		.Dpn;
+	}
+}
+.king-upimg-img {
+	.Wa;
+	.Ha;
+	.Pa;
+	left:0;
+	top:0;
+	z-index:3;
+	&:hover{
+		.rgba(0,0,0,.4);
+	}
+}

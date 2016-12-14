@@ -30,6 +30,27 @@
 		.W(240);
 	}
 }
+.king-select {
+	.H(34);
+	.Lh(34);
+	.fl;
+	padding: 0 5px;
+	.Fs-s;
+	.CG;
+	margin-left: 10px;
+	border-bottom: 1px solid @light;
+	&:focus {
+		outline:none;
+		border: 1px solid @red;
+		.BF;
+	}
+	&.large {
+		.W(430);
+	}
+	&.normal {
+		.W(240);
+	}
+}
 .king-textarea {
 	.WH(430,120);
 	.Lh(20);
@@ -98,5 +119,49 @@
 	z-index:3;
 	&:hover{
 		.rgba(0,0,0,.4);
+	}
+}
+.king-input-editorwarp {
+	.Dpi;
+	margin-bottom:15px;
+	.Wa;
+}
+.king-input-editor {
+	.Wa;
+	.Dpi;
+	.Pr;
+}
+.king-input-editorfunc {
+	.Wa;
+	.H(40);
+	.Pa;
+	top:0;
+	left:0;
+	.Bg(@line);
+	padding:0 10px;
+	a {
+		.Lh(40);
+		.Cp;
+		.unSelect;
+		margin-right:10px;
+		&:hover {
+			.CR;
+		}
+	}
+}
+.king-input-editorbox {
+	.Wa;
+	.H(500);
+	.BF;
+	padding:50px 10px 10px 10px;
+	border:none;
+	&:focus {
+		outline:none;
+		border:1px solid @red;
+	}
+}
+.view {
+	img {
+		.Wa;
 	}
 }

@@ -4,8 +4,13 @@
   "description": "zion",
   "main": "main.js",
   "scripts": {
-    "start_zion": "webpack-dev-server --config webpack.config.js --progress --hot --inline --history-api-fallback",
-    "build_zion": "webpack --config webpack.config.js --progress --colors"
+    "start_zion"		: "webpack-dev-server --config webpack.config.js --progress --hot --inline --history-api-fallback",
+    "start_blog"		: "webpack-dev-server --config webpack.config.js --progress --hot --inline --history-api-fallback",
+    "start_romanote"	: "webpack-dev-server --config webpack.config.js --progress --hot --inline --history-api-fallback",
+	
+    "build_zion"		: "webpack --config webpack.config.js --progress --colors",
+    "build_romanote"	: "webpack --config webpack.config.js --progress --colors",
+    "build_blog"		: "webpack --config webpack.config.js --progress --colors"
   },
   "author": "sunjay",
   "license": "ISC",

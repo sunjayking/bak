@@ -1,6 +1,9 @@
 import React from 'react'
 import { HomeMod } from '../module/homeMod'
-import { ArticlelistMod, ArticleaddMod, ArticleeditMod } from '../module/articleMod'
+import { ArticleaddMod, ArticleeditMod } from '../module/articleMod'
+import { BlogMod } from '../module/blogMod'
+import { H5Mod } from '../module/h5Mod'
+import { WebMod } from '../module/webMod'
 import { Store } from 'sun-king'
 import { GET } from '../driver/api'
 import { GO } from '../driver/utils'
@@ -32,9 +35,11 @@ class DashboardPage extends React.Component {
 		const admin = Store.get('admin')
 		const { id } = this.props.params
 		
-		let child = id || 'article'
+		let child = id || 'blog'
 		const childMod = {
-			article		: (<ArticlelistMod {...this.props}/>),
+			blog		: (<BlogMod {...this.props}/>),
+			h5		: (<H5Mod {...this.props}/>),
+			web		: (<WebMod {...this.props}/>),
 			articleadd	: (<ArticleaddMod {...this.props}/>),
 			articleedit	: (<ArticleeditMod {...this.props}/>),
 		}
@@ -43,7 +48,9 @@ class DashboardPage extends React.Component {
 		let content = childMod[child] || null
 		//-- 定义左边导航
 		let navList = [
-			{url:'/dashboard/sunjay/article',name:'文章管理',outside:false,active:true}
+			{url:'/dashboard/sunjay/blog',name:'Blog',outside:false,active:id=='blog'||!id},
+			{url:'/dashboard/sunjay/h5',name:'H5定制',outside:false,active:id=='h5'},
+			{url:'/dashboard/sunjay/web',name:'WEB定制',outside:false,active:id=='web'},
 		]
 		//-- 定义右边客户名称
 		let customer = 'sunjay'
@@ -53,6 +60,7 @@ class DashboardPage extends React.Component {
 				customer={customer}
 				content={content}
 				login
+				{...this.props}
 			/>
 		)
 	}

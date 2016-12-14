@@ -27,10 +27,12 @@ class Table extends React.Component {
 					let handle
 					if(_.isArray(value)){
 						handle = value.map((v,k)=>{
-							return (
-								<a onClick={v.func} key={k}>{v.name}</a>
-							)
+							return v.func
+							? (<a onClick={v.func} key={k}>{v.name}</a>)
+							: (<b key={k}>{v.name}</b>)
 						})
+					}else if(_.isObject(value)){
+						handle = (<a href={value.url} target='_blank'>{value.name}</a>)
 					}else{
 						handle = value
 					}

@@ -8,8 +8,8 @@ class Img extends React.Component {
 	}
 	render(){
 		const { src, alt } = this.props
-		let defSrc = src || 'http://img.romanote.com/web/romanote_logo.png'
-		let defAlt = alt || 'romanote,sunjay,罗曼笔记,生活美学'
+		let defSrc = src || 'http://asset.sunjay.cn/img/web/sunjay_logo.png'
+		let defAlt = alt || 'sunjay,生活美学,H5'
 		return (
 			<img src={defSrc} alt={defAlt} />
 		)

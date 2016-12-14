@@ -62,7 +62,7 @@ module.exports = {
 			},
 			cssType,
 			{
-				test: /\.(woff|svg|eot|ttf)\??.*$/,
+				test: /\.(woff|svg|eot|ttf|jpg|png|gif)\??.*$/,
 				loader: 'url?limit=' + ( pro.filesize * 1024 ) + '&name=/font/[name].[hash].[ext]'
 			},
 			{

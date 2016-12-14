@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col, Img, Input, Button, Form, Dialog, Tip, Tab, Table, Loading, Textarea, Upimg } from '../component'
+import { Row, Col, Img, Input, Button, Form, Dialog, Tip, Select, Tab, Table, Loading, Textarea, Upimg, Editor } from '../component'
 import { Link } from 'react-router'
 import { GET, DELETE, PUT, POST } from '../driver/api'
 import { Store, _, DOM } from 'sun-king'
@@ -38,11 +38,16 @@ class ArticlelistMod extends React.Component {
 			'delete' : {
 				status : 0
 			},
+			'recommend' : {
+				status : 2,
+				recommend : 1
+			},
 		}
 		let self = this
+		let type = this.props.params.id || 'blog'
 		GET({
 			url : 'article',
-			data : dataToken[token],
+			data : _.mixin(dataToken[token],{type:type}),
 			success : (res)=>{
 				Store.set('article',res)
 				self.setState({list:true})
@@ -60,23 +65,39 @@ class ArticlelistMod extends React.Component {
 			'publish'	: '发布',
 			'cancel'	: '取消发布',
 			'delete'	: '删除',
-			'renew'		: '恢复'
+			'recommend'	: '推荐',
+			'renew'		: '恢复',
+			'cancelRecommend'	: '取消推荐'
 		}
-		const param = {
-			'publish'	: 2,
-			'cancel'	: 1,
-			'delete'	: 0,
-			'renew'		: 1
+		let dataType = {
+			publish : {
+				status : 2
+			},
+			cancel : {
+				status : 1
+			},
+			'delete' : {
+				status : 0
+			},
+			renew : {
+				status : 1
+			},
+			recommend : {
+				status : 2,
+				recommend : 1
+			},
+			cancelRecommend : {
+				status : 2,
+				recommend : 0
+			},
 		}
+		let data = _.mixin(dataType[type],{id:val.id})
 		Dialog(tip[type]+'文章《'+val.title+'》？',{
 			ok:{				
 				func : ()=>{
 					PUT({
 						url : 'article',
-						data : {
-							id : val.id,
-							status : param[type]
-						},
+						data : data,
 						success : (res)=>{
 							self.getArticleList(self.state.tab || 'vaild')				
 						},
@@ -97,6 +118,7 @@ class ArticlelistMod extends React.Component {
 		let tabList = [
 			{name:'已发布',token:'vaild'},
 			{name:'未发布',token:'invaild'},
+			{name:'推荐',token:'recommend'},
 			{name:'回收站',token:'delete'},
 		]
 		//-- 定义tab事件
@@ -115,29 +137,49 @@ class ArticlelistMod extends React.Component {
 		let tableHead = [
 			'日期',
 			'标题',
+			'阅读量',
 			'操作',
 		]
-		
 		//-- 定义table列表
 		let tableContent = []
 		let articleList = Store.get('article')
-		articleList && articleList.data.map((val,i)=>{
-			tableContent.push([
-				_.Time(val.createtime,'yyyy/MM/dd hh:mm'),
-				val.title || '未定义标题',
-				val.status == 1
-					? [
+		let token = this.state.tab
+		let handle = (val)=>{
+			switch(token){
+				case 'vaild' :
+					return [
+						{name :'取消发布',func:()=>{this.updateArticle(val,'cancel')}},
+						{name :'编辑',func:()=>{this.edit(val)}},
+						val.recommend == 1
+							? {name :'已推荐'}
+							: {name :'推荐',func:()=>{this.updateArticle(val,'recommend')}}
+					]
+					break
+				case 'invaild' :
+					return [
 						{name :'编辑',func:()=>{this.edit(val)}},
 						{name :'删除',func:()=>{this.updateArticle(val,'delete')}},
 						{name :'发布',func:()=>{this.updateArticle(val,'publish')}}
 					]
-					: val.status == 2
-						? [
-							{name :'取消发布',func:()=>{this.updateArticle(val,'cancel')}},
-						]
-						: [
-							{name :'恢复',func:()=>{this.updateArticle(val,'renew')}},
-						]
+					break
+				case 'recommend' :
+					return [
+						{name :'取消推荐',func:()=>{this.updateArticle(val,'cancelRecommend')}}
+					]
+					break
+				case 'delete' :
+					return [
+						{name :'恢复',func:()=>{this.updateArticle(val,'renew')}}
+					]
+					break
+			}
+		}
+		articleList && articleList.data.map((val,i)=>{
+			tableContent.push([
+				_.Time(val.updatetime,'yy/MM/dd'),
+				{name:val.title || '未定义标题',url:'http://sunjay.cn/blog/article/'+val.id},
+				val.views,
+				handle(val)
 			])
 		})
 		let content = this.state.list ? <Table headList={tableHead} conList={tableContent} /> : <Loading con='正在加载文章列表...' />
@@ -171,32 +213,35 @@ class ArticleaddMod extends React.Component {
 	componentWillUnmount(){}
 	//-- 新增文章
 	add(callback){
+		let content = editor.getContent()
 		//-- 获取值
 		let issueData = getValue([
-			'name',
 			'title',
 			'cover',
-			'qrimg',
-			'content',
 			'summary',
+			'type',
 		])
 		//-- 简单的表单验证
 		if(!Vaild([
 			'title',
 			'cover',
-			'qrimg',
-			'content',
 			'summary',
 		])){
 			callback(false)
 			return
 		}
+		if(!content){
+			Tip('请填写内容！')
+			callback(false)
+			return
+		}
+		_.mixin(issueData,{content:content})
 		POST({
 			url : 'article',
 			data : issueData,
 			success : (res)=>{
 				callback(true)
-				Back();
+				GO('/dashboard/sunjay');
 			},
 			error : (res)=>{
 				Tip(res.errdata)
@@ -209,6 +254,11 @@ class ArticleaddMod extends React.Component {
 		Back()
 	}
 	render(){
+		let options = [
+			{name : 'blog', value : 'blog'},
+			{name : 'h5定制', value : 'h5'},
+			{name : 'web定制', value : 'web'},
+		]
 		return (
 			<div className='sj-home-conbox'>
 				<div className='sj-home-title'>
@@ -217,6 +267,7 @@ class ArticleaddMod extends React.Component {
 				</div>
 				<div className='sj-home-content'>
 					<Form>
+						{/*
 						<Input
 							label='标记'
 							tip='特殊标记名称，英文，请留空'
@@ -224,6 +275,13 @@ class ArticleaddMod extends React.Component {
 							type='text'
 							name='name'
 							ignore
+						/>
+						*/}
+						<Select
+							label='类型'
+							name='type'
+							options={options}
+							def='blog'
 						/>
 						<Input
 							label='标题'
@@ -239,20 +297,21 @@ class ArticleaddMod extends React.Component {
 							name='cover'
 							width='180'
 							height='100'
-							bgimg='http://img.romanote.com/web/upimg_180-100.png'
+							value={''}
+							bgimg='http://asset.sunjay.cn/img/web/upimg_180-100.png'
 						/>
+						{/*
 						<Upimg
 							label='二维码'
 							tip='200*200px，1M以内，格式jpg，png，jpeg'
 							name='qrimg'
 							width='120'
 							height='120'
-							bgimg='http://img.romanote.com/web/upimg_120-120.png'
+							bgimg='http://asset.sunjay.cn/img/web/upimg_120-120.png'
 						/>
-						<Textarea
+						*/}
+						<Editor
 							label='内容'
-							tip='摘要，120字以内。'
-							length='120'
 							name='content'
 						/>
 						<Textarea
@@ -319,33 +378,35 @@ class ArticleeditMod extends React.Component {
 	componentWillUnmount(){}
 	//-- 新增文章
 	update(callback){
+		let content = editor.getContent()
 		//-- 获取值
 		let issueData = getValue([
-			'name',
+			'type',
 			'title',
 			'cover',
-			'qrimg',
-			'content',
 			'summary',
 		])
 		//-- 简单的表单验证
 		if(!Vaild([
 			'title',
 			'cover',
-			'qrimg',
-			'content',
 			'summary',
 		])){
 			callback(false)
 			return
 		}
-		_.mixin(issueData,{id:this.props.params.cid})
+		if(!content){
+			Tip('请填写内容！')
+			callback(false)
+			return
+		}
+		_.mixin(issueData,{content:content,id:this.props.params.cid})
 		PUT({
 			url : 'article',
 			data : issueData,
 			success : (res)=>{
 				callback(true)
-				Back();
+				GO('/dashboard/sunjay');
 			},
 			error : (res)=>{
 				Tip(res.errdata)
@@ -361,8 +422,14 @@ class ArticleeditMod extends React.Component {
 		const { cid } = this.props.params
 		const data = Store.get('article'+cid)
 		let article = data ? data.data[0] : ''
+		let options = [
+			{name : 'blog', value : 'blog'},
+			{name : 'h5定制', value : 'h5'},
+			{name : 'web定制', value : 'web'},
+		]
 		let content = this.state.info ? (
 				<Form>
+					{/*
 					<Input
 						label='标记'
 						tip='特殊标记名称，英文，请留空'
@@ -371,6 +438,13 @@ class ArticleeditMod extends React.Component {
 						name='name'
 						value={article.name}
 						ignore
+					/>
+					*/}
+					<Select
+						label='类型'
+						name='type'
+						options={options}
+						def={article.type}
 					/>
 					<Input
 						label='标题'
@@ -388,8 +462,9 @@ class ArticleeditMod extends React.Component {
 						width='180'
 						height='100'
 						value={article.cover}
-						bgimg='http://img.romanote.com/web/upimg_180-100.png'
+						bgimg='http://asset.sunjay.cn/img/web/upimg_180-100.png'
 					/>
+					{/*
 					<Upimg
 						label='二维码'
 						tip='200*200px，1M以内，格式jpg，png，jpeg'
@@ -397,12 +472,11 @@ class ArticleeditMod extends React.Component {
 						width='120'
 						height='120'
 						value={article.qrimg}
-						bgimg='http://img.romanote.com/web/upimg_120-120.png'
+						bgimg='http://asset.sunjay.cn/img/web/upimg_120-120.png'
 					/>
-					<Textarea
+					*/}
+					<Editor
 						label='内容'
-						tip='摘要，120字以内。'
-						length='120'
 						name='content'
 						value={article.content}
 					/>

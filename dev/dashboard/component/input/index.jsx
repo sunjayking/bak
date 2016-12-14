@@ -7,6 +7,9 @@ import './style/main.less'
 import {DOM} from 'sun-king'
 import {Tip} from '../'
 import { POST } from '../../driver/api'
+import './editor/ueditor.config.js'
+import './editor/ueditor.js'
+import './editor/zh-cn.js'
 
 class Input extends React.Component {
 	constructor(props) {
@@ -26,10 +29,13 @@ class Input extends React.Component {
 		let ignoreBox = ignore
 			? null
 			: (<b>*</b>)
+		let content = length
+			? (<input className={inputClass} placeholder={tip} maxLength={length} type={type} name={name} defaultValue={value} />)
+			: <input className={inputClass} placeholder={tip} type={type} name={name} defaultValue={value} />
 		return (
 			<div className='king-input-box'>
 				<label className='king-input-label'>{ignoreBox}{label} :</label>
-				<input className={inputClass} placeholder={tip} maxLength={length} type={type} name={name} defaultValue={value} />
+				{content}
 				<p className={warnClass}>{warn}</p>
 			</div>
 		)
@@ -53,6 +59,39 @@ class Textarea extends React.Component {
 			<div className='king-input-box'>
 				<label className='king-input-label'>{ignoreBox}{label} :</label>
 				<textarea className='king-textarea' placeholder={tip} maxLength={length} name={name} defaultValue={value} ></textarea>
+				<p className={warnClass}>{warn}</p>
+			</div>
+		)
+	}
+}
+
+class Select extends React.Component {
+	constructor(props) {
+		super(props)
+	}
+	render(){
+		const { label, options, def, name, warn, ignore, size } = this.props
+		let warnClass = ClassName({
+			'king-input-warn' : true,
+			'hide' : !warn,
+		})
+		let inputClass = ClassName({
+			'king-select' : true,
+			'large' : size == 'large',
+			'normal' : !size || size == 'normal'
+		})
+		let ignoreBox = ignore
+			? null
+			: (<b>*</b>)
+		let option = options.map((val,i)=>{
+			return (<option key={i} value={val.value}>{val.name}</option>)
+		})
+		return (
+			<div className='king-input-box'>
+				<label className='king-input-label'>{ignoreBox}{label} :</label>
+				<select defaultValue={def} className={inputClass} name={name}>
+					{option}
+				</select>
 				<p className={warnClass}>{warn}</p>
 			</div>
 		)
@@ -94,6 +133,7 @@ class Upimg extends React.Component {
 			success : (res)=>{
 				inputfile.files[0].filename = res.filename
 				self.setState({upimg:res.filename})
+				console.log('aaa')
 			},
 			error : (res)=>{
 				console.log(res)
@@ -126,8 +166,47 @@ class Upimg extends React.Component {
 	}
 }
 
+class Editor extends React.Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+		}
+	}
+	//-- 初始
+	componentDidMount(){
+		let value = this.props.value
+        let editor = UE.getEditor('editor',{
+			initialFrameHeight : 500,
+			initialContent:value
+		})
+		window.editor = this.editor = editor
+	}
+	//-- 更新
+	componentDidUpdate(){}
+	//-- 移除
+	componentWillUnmount(){
+		this.editor.destroy()
+	}
+	render(){
+		const { label, name, ignore, value } = this.props
+		let ignoreBox = ignore
+			? null
+			: (<b>*</b>)
+		return (
+			<div className='king-input-editorwarp'>
+				<label className='king-input-label'>{ignoreBox}{label} :</label>
+				<div className='king-input-editor'>
+					<script id="editor" name="content" type="text/plain"></script>
+				</div>
+			</div>
+		)
+	}
+}
+
 export {
 	Input,
+	Select,
 	Textarea,
 	Upimg,
+	Editor,
 }
