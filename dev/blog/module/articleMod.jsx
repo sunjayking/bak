@@ -46,8 +46,8 @@ class ArticlelistMod extends React.Component {
 		data && data.map((val)=>{
 			artlist.push({
 				title : val.title,
-				time : _.Time(val.updatetime,'yyyy年MM月dd日 hh:mm'),
-				url : '/'+this.props.params.mod+'/article/'+val.id,
+				time : _.Time(val.createtime,'yyyy年MM月dd日 hh:mm'),
+				url : '/'+(this.props.params.mod || 'blog') +'/article/'+val.id,
 				cover : /\:\/\//.test(val.cover) ? val.cover : '/uploads/'+val.cover,
 				summary : val.summary
 			})
@@ -56,7 +56,7 @@ class ArticlelistMod extends React.Component {
 			return (
 				<li key={i}>
 					<div className='sj-home-artlist-title'>
-						<h1>{value.title}</h1>
+						<a href={value.url} target='_blank'>{value.title}</a>
 						<h2>{value.time}</h2>
 					</div>
 					<div className='sj-home-artlist-content'>

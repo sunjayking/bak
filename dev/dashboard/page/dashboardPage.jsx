@@ -4,6 +4,7 @@ import { ArticleaddMod, ArticleeditMod } from '../module/articleMod'
 import { BlogMod } from '../module/blogMod'
 import { H5Mod } from '../module/h5Mod'
 import { WebMod } from '../module/webMod'
+import { SeoMod } from '../module/seoMod'
 import { Store } from 'sun-king'
 import { GET } from '../driver/api'
 import { GO } from '../driver/utils'
@@ -40,6 +41,7 @@ class DashboardPage extends React.Component {
 			blog		: (<BlogMod {...this.props}/>),
 			h5		: (<H5Mod {...this.props}/>),
 			web		: (<WebMod {...this.props}/>),
+			seo		: (<SeoMod {...this.props}/>),
 			articleadd	: (<ArticleaddMod {...this.props}/>),
 			articleedit	: (<ArticleeditMod {...this.props}/>),
 		}
@@ -48,7 +50,7 @@ class DashboardPage extends React.Component {
 		let content = childMod[child] || null
 		//-- 定义左边导航
 		let navList = [
-			{url:'/dashboard/sunjay/blog',name:'Blog',outside:false,active:id=='blog'||!id},
+			{url:'/dashboard/sunjay/blog',name:'古道书社',outside:false,active:id=='blog'||!id},
 			{url:'/dashboard/sunjay/h5',name:'H5定制',outside:false,active:id=='h5'},
 			{url:'/dashboard/sunjay/web',name:'WEB定制',outside:false,active:id=='web'},
 		]

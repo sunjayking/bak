@@ -5,6 +5,7 @@ const api = {
 	admin		: '/api/admin',			//-- 管理员
 	article		: '/api/article',		//-- 文章
 	image		: '/api/image',			//-- 图片
+	seo			: '/api/seo',			//-- SEO
 }
 
 import {_} from 'sun-king'

@@ -2,6 +2,7 @@ import React from 'react'
 import { HomeMod } from '../module/homeMod'
 import { ArticlelistMod, ArticledetMod } from '../module/articleMod'
 import { browserHistory } from 'react-router'
+import { DOM } from 'sun-king'
 
 //-- 控制台
 class ArticlePage extends React.Component {
@@ -20,7 +21,7 @@ class ArticlePage extends React.Component {
 		const { mod, mid, id, cid} = this.props.params
 		//-- 定义左边导航
 		let navList = [
-			{ url:'/blog', name:'Blog', active:mod=='blog'||!mod},
+			{ url:'/blog', name:'古道书社', active:mod=='blog'||!mod},
 			{ url:'/h5', name:'H5定制', active:mod=='h5'},
 			{ url:'/web', name:'WEB定制', active:mod=='web'},
 			// { url:'http://romanote.com', name:'罗曼笔记',outside:true},

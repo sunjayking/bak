@@ -176,7 +176,7 @@ class ArticlelistMod extends React.Component {
 		}
 		articleList && articleList.data.map((val,i)=>{
 			tableContent.push([
-				_.Time(val.updatetime,'yy/MM/dd'),
+				_.Time(val.createtime,'yy/MM/dd'),
 				{name:val.title || '未定义标题',url:'http://sunjay.cn/blog/article/'+val.id},
 				val.views,
 				handle(val)
@@ -220,6 +220,7 @@ class ArticleaddMod extends React.Component {
 			'cover',
 			'summary',
 			'type',
+			'keyword',
 		])
 		//-- 简单的表单验证
 		if(!Vaild([
@@ -320,6 +321,12 @@ class ArticleaddMod extends React.Component {
 							length='120'
 							name='summary'
 						/>
+						<Textarea
+							label='关键词'
+							tip='关键词，50字以内'
+							length='50'
+							name='keyword'
+						/>
 						<div className='sj-form-btnbox'>
 							<Button
 								name='保存'
@@ -385,6 +392,7 @@ class ArticleeditMod extends React.Component {
 			'title',
 			'cover',
 			'summary',
+			'keyword',
 		])
 		//-- 简单的表单验证
 		if(!Vaild([
@@ -486,6 +494,13 @@ class ArticleeditMod extends React.Component {
 						length='120'
 						name='summary'
 						value={article.summary}
+					/>
+					<Textarea
+						label='关键词'
+						tip='关键词，50字以内'
+						length='50'
+						name='keyword'
+						value={article.keyword}
 					/>
 					<div className='sj-form-btnbox'>
 						<Button

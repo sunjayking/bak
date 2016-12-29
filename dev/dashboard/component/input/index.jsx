@@ -133,7 +133,6 @@ class Upimg extends React.Component {
 			success : (res)=>{
 				inputfile.files[0].filename = res.filename
 				self.setState({upimg:res.filename})
-				console.log('aaa')
 			},
 			error : (res)=>{
 				console.log(res)

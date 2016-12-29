@@ -51,6 +51,7 @@
 				"name"			=> $name,
 				"title"			=> $data->title,
 				"summary"		=> $data->summary,
+				"keyword"		=> $data->keyword,
 				"content"		=> $data->content,
 				"cover"			=> $data->cover,
 				"type"			=> $data->type,
@@ -69,7 +70,7 @@
 			self::check()->right('uparticle');
 			self::check()->isEmpty($data,Array('id'));
 			//-- 配置数据表中字段
-			$baseParams = Array('id','name','title','summary','content','type','cover','qrimg','createtime','updatetime','sort','status','recommend');
+			$baseParams = Array('id','name','title','summary','keyword','content','type','cover','qrimg','createtime','updatetime','sort','status','recommend');
 			$updateData = Array();
 			foreach($data as $key => $val){
 				in_array($key, $baseParams) && array_push($updateData, $key."='".$val."'");  
